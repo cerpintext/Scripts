@@ -11,21 +11,26 @@ if [ $# -ne 0 ]; then
     done
 
     subjectpath="$HOME/Documents/NTNU/$subject"
-    weekpath="/$subjectpath/week$( date +%W )"
-    note="$path/lecture$( date +%y-%m-%d ).md"
+    weekpath="$subjectpath/week$( date +%W )"
+    note="$weekpath/lecture$( date +%y-%m-%d )"
+
+
+    #echo $subjectpath
+    #echo $weekpath
+    #echo $note
 
     if [ ! -f "$note" ]; then
-        if [ ! -d "$path" ]; then
-            if [ ! -d "$subjectpatht"] ]; then
+        if [ ! -d "$weekpath" ]; then
+            if [ ! -d "$subjectpath" ]; then
                 mkdir "$subjectpath"
             fi
             #echo "Directory doesn't exist, constructing path"
-            mkdir "$path"
+            mkdir "$weekpath"
         fi
         touch "$note"
     fi
 
-    #$EDITOR "$note"
+    $EDITOR "$note"
 
 else
     echo 'Need to pass arguments -s [--subject]'
