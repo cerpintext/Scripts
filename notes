@@ -30,7 +30,7 @@ if [ $# -ne 0 ]; then
         touch "$note"
     fi
 
-    echo "date +%H:%M:%S" >> "$note"
+    echo "$(date +%H:%M:%S)" >> "$note"
     $EDITOR "$note"
 
 else
