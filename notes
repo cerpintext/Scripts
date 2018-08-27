@@ -27,7 +27,8 @@ if [ $# -ne 0 ]; then
             #echo "Directory doesn't exist, constructing path"
             mkdir "$weekpath"
         fi
-        touch "$note"
+        #touch "$note"
+        echo "#$subject notes - $(date "+%y-%m-%d : w%W") > "note"
     fi
 
     echo "$(date +%H:%M:%S)" >> "$note"
