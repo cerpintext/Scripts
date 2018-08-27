@@ -1,39 +1,39 @@
 #!/bin/bash
 
 
-if [ $# -ne 0 ]; then
-    while getopts s:o option; do
-        case "${option}" in
-            s) subject=${OPTARG}
-               echo $subject;;
-            o) optional=${OPTARG};;
-        esac
-    done
+while getopts s:o option; do
+    case "${option}" in
+        s) 
+            subject=${OPTARG}
+            echo $subject;;
+        o) 
+            optional=${OPTARG};;
+        *) 
+            echo 'Need to pass arguments -s [--subject]'
+            exit;;
+    esac
+done
 
-    subjectpath="$HOME/Documents/NTNU/$subject"
-    weekpath="$subjectpath/week$( date +%W )"
-    note="$weekpath/lecture$( date +%y-%m-%d )"
+subjectpath="$HOME/Documents/NTNU/$subject"
+weekpath="$subjectpath/week$( date +%W )"
+note="$weekpath/lecture$( date +%y-%m-%d )"
 
 
-    #echo $subjectpath
-    #echo $weekpath
-    #echo $note
+#echo $subjectpath
+#echo $weekpath
+#echo $note
 
-    if [ ! -f "$note" ]; then
-        if [ ! -d "$weekpath" ]; then
-            if [ ! -d "$subjectpath" ]; then
-                mkdir "$subjectpath"
-            fi
-            #echo "Directory doesn't exist, constructing path"
-            mkdir "$weekpath"
+if [ ! -f "$note" ]; then
+    if [ ! -d "$weekpath" ]; then
+        if [ ! -d "$subjectpath" ]; then
+            mkdir "$subjectpath"
         fi
-        #touch "$note"
-        echo "#$subject notes - $(date "+%y-%m-%d : w%W") > "note"
+        #echo "Directory doesn't exist, constructing path"
+        mkdir "$weekpath"
     fi
-
-    echo "$(date +%H:%M:%S)" >> "$note"
-    $EDITOR "$note"
-
-else
-    echo 'Need to pass arguments -s [--subject]'
+    #touch "$note" 
+    echo "#$subject - "$( date "+%y-%m-%d week%W") > "$note"
 fi
+
+date +%H:%M:%S >> "$note"
+$EDITOR "$note"
