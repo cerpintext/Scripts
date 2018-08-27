@@ -32,7 +32,7 @@ if [ ! -f "$note" ]; then
         mkdir "$weekpath"
     fi
     #touch "$note" 
-    echo "#$subject - "$( date "+%y-%m-%d week%W") > "$note"
+    printf "#%s - $(date "+%y-%m-%d week%W") \nAuthor: %s\n" "$subject" "$USER" > "$note"
 fi
 
 date +%H:%M:%S >> "$note"
