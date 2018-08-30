@@ -1,14 +1,22 @@
 #!/bin/bash
 # Change keyboard layout between different layouts
 
+
 layouts=(us no)
-layout=$(setxkbmap -query | grep "layout" | awk '{printf $2}')
 
-case "$layout" in
-    "us") num=1;;
-    "no") num=0;;
-    "*" ) num=0;;
-esac
+now=$(setxkbmap -query | grep 'layout' | awk '{print $2}')
 
-setxkbmap "${layouts[num]}"
-echo "$?"
+export i=0
+for opt in "${layouts[@]}"; do
+    if [[ $opt =~ $now ]]; then
+        ((i+=1))
+        if [ $i -ge ${#layouts[@]} ]; then
+            i=$((0))
+        fi
+        setxkbmap "${layouts[i]}"
+        echo "success"
+        exit
+    fi
+    ((i+=1))
+done 
+echo "fail"
