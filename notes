@@ -35,5 +35,5 @@ if [ ! -f "$note" ]; then
     printf "#%s - $(date "+%y-%m-%d week%W") \nAuthor: %s\n" "$subject" "$USER" > "$note"
 fi
 
-date +%H:%M:%S >> "$note"
+#date +%H:%M:%S >> "$note"
 $EDITOR "$note"
