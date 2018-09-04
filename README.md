@@ -1,6 +1,6 @@
 # QoL-scripts
 
-Author: Kristian S. Holm
+Author: Kristian S. Holm  
 Email: krisshol@stud.ntnu.no
 
 
