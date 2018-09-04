@@ -4,19 +4,19 @@
 
 layouts=(us no)
 
-now=$(setxkbmap -query | grep 'layout' | awk '{print $2}')
+current=$(setxkbmap -query | grep 'layout' | awk '{print $2}')
 
 export i=0
 for opt in "${layouts[@]}"; do
-    if [[ $opt =~ $now ]]; then
+    if [[ $opt =~ $current ]]; then
         ((i+=1))
         if [ $i -ge ${#layouts[@]} ]; then
             i=$((0))
         fi
         setxkbmap "${layouts[i]}"
-        echo "success"
+        notify-send "Layout: " "${layouts[i]}"
         exit
     fi
     ((i+=1))
 done 
-echo "fail"
+notify-send "Kb switch: fail"
