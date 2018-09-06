@@ -16,7 +16,7 @@ done
 
 subjectpath="$HOME/Documents/NTNU/$subject"
 weekpath="$subjectpath/week$( date +%W )"
-note="$weekpath/lecture$( date +%y-%m-%d )"
+note="$weekpath/lecture$( date +%y-%m-%d ).md"
 
 
 #echo $subjectpath
