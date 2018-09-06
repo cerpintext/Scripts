@@ -5,7 +5,6 @@ while getopts s:o option; do
     case "${option}" in
         s) 
             subject=${OPTARG}
-            echo $subject;;
         o) 
             optional=${OPTARG};;
         *) 
