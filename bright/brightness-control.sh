@@ -21,3 +21,4 @@ if [ "$1" = "-dec" ]; then
 fi
 echo "$new" | tee "$brightness"
 
+notify-send "Bright:" "$new / $max_brightness"

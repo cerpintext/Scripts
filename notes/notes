@@ -31,7 +31,7 @@ if [ ! -f "$note" ]; then
         mkdir "$weekpath"
     fi
     #touch "$note" 
-    printf "#%s - $(date "+%y-%m-%d week%W") \nAuthor: %s\n" "$subject" "$USER" > "$note"
+    printf "# %s - $(date "+%y-%m-%d week-%W")  \nAuthor: %s\n" "$subject" "$USER" > "$note"
 fi
 
 #date +%H:%M:%S >> "$note"
